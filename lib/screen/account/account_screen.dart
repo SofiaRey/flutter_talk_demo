@@ -18,14 +18,14 @@ class AccountScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           child: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.topCenter,
         children: [
           Container(
             height: 150,
-            color: Colors.grey.shade300,
+            color: Colors.grey.shade200,
           ),
-          Container(
-            margin: EdgeInsets.only(top: 20),
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
             child: Hero(
               tag: args['id'],
               child: CircleAvatar(

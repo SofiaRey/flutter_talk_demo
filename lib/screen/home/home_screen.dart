@@ -1,6 +1,7 @@
+import 'package:demo_flutter_talk/model/user.dart';
 import 'package:demo_flutter_talk/screen/home/widgets/user_card.dart';
-import 'package:demo_flutter_talk/screen/model/user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class HomeScreen extends StatelessWidget {
   List<User> userCards = const [
@@ -46,6 +47,7 @@ class HomeScreen extends StatelessWidget {
     ),
   ];
 
+  static String route = '/home';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,21 +55,42 @@ class HomeScreen extends StatelessWidget {
         title: const Text(
           'Home',
         ),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         foregroundColor: Colors.grey.shade700,
         elevation: 1,
       ),
-      body: SingleChildScrollView(
-          child: Container(
+      body: Container(
         color: Colors.grey.shade100,
-        child: Column(
-            children: userCards
-                .map((e) => UserCard(
-                      tag: e.id,
-                      color: e.color,
-                    ))
-                .toList()),
-      )),
+        child: AnimationLimiter(
+          child: ListView.builder(
+            itemCount: userCards.length,
+            itemBuilder: (BuildContext ctx, int i) {
+              return AnimationConfiguration.staggeredList(
+                position: i,
+                delay: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
+                // FadeInAnimation, SlideAnimation, ScaleAnimation, FlipAnimation
+                child: ScaleAnimation(
+                  delay: const Duration(milliseconds: 250),
+                  child: UserCard(
+                    tag: userCards[i].id,
+                    color: userCards[i].color,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+
+        // ListView(
+        //     children: userCards
+        //         .map((user) => UserCard(
+        //               tag: user.id,
+        //               color: user.color,
+        //             ))
+        //         .toList()),
+      ),
     );
   }
 }
