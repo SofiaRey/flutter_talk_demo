@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       home: const LoadingScreen(),
       routes: {
         HomeLoadingScreen.route: (context) => const HomeLoadingScreen(),
-        HomeScreen.route: (context) => HomeScreen(),
+        HomeScreen.route: (context) => const HomeScreen(),
         AccountScreen.route: (context) => const AccountScreen(),
       },
     );

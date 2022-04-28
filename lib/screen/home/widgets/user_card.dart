@@ -2,11 +2,11 @@ import 'package:demo_flutter_talk/screen/account/account_screen.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
-  UserCard({Key? key, required this.color, required this.tag})
+  const UserCard({Key? key, required this.color, required this.tag})
       : super(key: key);
 
-  Color color;
-  String tag;
+  final Color color;
+  final String tag;
 
   @override
   Widget build(BuildContext context) {

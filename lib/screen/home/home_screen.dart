@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class HomeScreen extends StatelessWidget {
-  List<User> userCards = const [
+  const HomeScreen({Key? key}) : super(key: key);
+
+  final List<User> _userCards = const [
     User(
       id: 'user1',
       color: Color.fromRGBO(240, 170, 170, 1),
@@ -47,7 +49,8 @@ class HomeScreen extends StatelessWidget {
     ),
   ];
 
-  static String route = '/home';
+  static const String route = '/home';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +67,7 @@ class HomeScreen extends StatelessWidget {
         color: Colors.grey.shade100,
         child: AnimationLimiter(
           child: ListView.builder(
-            itemCount: userCards.length,
+            itemCount: _userCards.length,
             itemBuilder: (BuildContext ctx, int i) {
               return AnimationConfiguration.staggeredList(
                 position: i,
@@ -74,8 +77,8 @@ class HomeScreen extends StatelessWidget {
                 child: ScaleAnimation(
                   delay: const Duration(milliseconds: 250),
                   child: UserCard(
-                    tag: userCards[i].id,
-                    color: userCards[i].color,
+                    tag: _userCards[i].id,
+                    color: _userCards[i].color,
                   ),
                 ),
               );
@@ -84,7 +87,7 @@ class HomeScreen extends StatelessWidget {
         ),
 
         // ListView(
-        //     children: userCards
+        //     children: _ userCards
         //         .map((user) => UserCard(
         //               tag: user.id,
         //               color: user.color,
