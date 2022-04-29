@@ -65,19 +65,28 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         color: Colors.grey.shade100,
-        child: AnimationLimiter(
+        child:
+            // ListView(
+            //     children: _userCards
+            //         .map((user) => UserCard(
+            //               id: user.id,
+            //               color: user.color,
+            //             ))
+            //         .toList()),
+
+            AnimationLimiter(
           child: ListView.builder(
             itemCount: _userCards.length,
             itemBuilder: (BuildContext ctx, int i) {
               return AnimationConfiguration.staggeredList(
                 position: i,
                 delay: const Duration(milliseconds: 500),
-                duration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 1000),
                 // FadeInAnimation, SlideAnimation, ScaleAnimation, FlipAnimation
                 child: ScaleAnimation(
                   delay: const Duration(milliseconds: 250),
                   child: UserCard(
-                    tag: _userCards[i].id,
+                    id: _userCards[i].id,
                     color: _userCards[i].color,
                   ),
                 ),
@@ -85,14 +94,6 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ),
-
-        // ListView(
-        //     children: _ userCards
-        //         .map((user) => UserCard(
-        //               tag: user.id,
-        //               color: user.color,
-        //             ))
-        //         .toList()),
       ),
     );
   }

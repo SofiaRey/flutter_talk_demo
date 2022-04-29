@@ -2,11 +2,11 @@ import 'package:demo_flutter_talk/screen/account/account_screen.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
-  const UserCard({Key? key, required this.color, required this.tag})
+  const UserCard({Key? key, required this.color, required this.id})
       : super(key: key);
 
   final Color color;
-  final String tag;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class UserCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: GestureDetector(
         onTap: () => Navigator.of(context).pushNamed(AccountScreen.route,
-            arguments: {'color': color, 'id': tag}),
+            arguments: {'color': color, 'id': id}),
         child: Stack(
           alignment: Alignment.centerLeft,
           children: [
@@ -34,7 +34,7 @@ class UserCard extends StatelessWidget {
               ),
             ),
             Hero(
-              tag: tag,
+              tag: id,
               child: CircleAvatar(
                 backgroundColor: color,
                 radius: 40,

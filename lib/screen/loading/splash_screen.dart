@@ -4,14 +4,14 @@ import 'package:demo_flutter_talk/screen/home/home_loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class LoadingScreen extends StatefulWidget {
-  const LoadingScreen({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoadingScreen> createState() => _LoadingScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3),
@@ -19,7 +19,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     return Scaffold(
         backgroundColor: Colors.grey.shade200,
-        body: const SpinKitFoldingCube(
+        body: const SpinKitDualRing(
           color: Color.fromRGBO(240, 170, 170, 1),
           size: 50.0,
         ));
